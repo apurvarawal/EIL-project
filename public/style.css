@@ -1,0 +1,63 @@
+/********** LOGIN PAGE**********/
+
+.logininfo{
+    position: relative;
+    width: 350px;
+    padding: 10px;
+    height: 255px;
+    border: none;
+    background-color:rgb(45, 45, 129);
+    margin: auto;
+}
+
+.loginbody{
+    color: rgb(18, 14, 14);
+    position: relative;
+    height: 30px;
+    border: none;
+    border-radius: 25px;
+    /*padding-left: 2px;*/
+    text-align: left;
+    background-color: #F0EBE3;
+}
+
+#imgLogo{
+    height: 80%;
+    width: 45%;
+    position: relative;
+    margin: auto;
+    border-radius: 50%;
+}
+
+/*********** REGISTER PAGE************/
+.registerinfo{
+    position: relative;
+    width: 350px;
+    padding: 10px;
+    height: 355px;
+    border: none;
+    background-color:rgb(45, 45, 129);
+    margin: auto;
+}
+
+/*********** DATABASE PAGE************/
+#imgLogoDataBasePage{
+    height: 80%;
+    width: 15%;
+    position: relative;
+    margin: auto;
+    border-radius: 50%;
+}
+
+.datainfo{
+    position: relative;
+    width: 70%;
+    padding: 10px;
+    border: none;
+    background-color:rgb(45, 45, 129);
+    margin: auto;
+}
+
+.hide{
+    display: none;
+}

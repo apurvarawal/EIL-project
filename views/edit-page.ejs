@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="icon" size="5px" href="../favicon-16x16.ico">
+        <script src="https://cdn.tailwindcss.com/"></script>
+        <title>EIL update data</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body class="loginbody">
+        <div class="collegename">
+            <header class="h-76 mx-11 grid grid-cols-3 px-8 gap-4 content-center bg-[#E4DCCF] ">
+                <img id="imgLogo" src="../EIL-logo.ico" alt="institute logo">
+                <p class="text-black text-left my-11  text-6xl font-serif"><span
+                        class=" inline-block align-left">Engineers India Limited</span></p>
+            </header>
+        </div> <br><br>
+        
+        
+        <div class="logininfo">
+            <form >
+                <div class="grid justify-items-center pt-8">
+                    <input id="name" class="takeinput rounded" type="name" name="name" placeholder="Name" value="<%= docs.name %>"><br>
+                </div>
+                <div class="grid justify-items-center">
+                    <input id="employeeID" class="takeinput rounded" type="number" name="employeeID" placeholder="Employee ID" value="<%= docs.employeeID %>"><br>
+                </div>
+                <div class="grid justify-items-center">
+                    <input id="phnnumber" class="takeinput rounded" type="number" name="phnnumber" placeholder="Phone Number" value="<%= docs.phnnumber %>"><br>
+                </div>      
+                <div class="grid justify-items-center">
+                    <button id="updatesubmit" class="signinbutton  bg-sky-600 hover:bg-sky-700 w-28 text-white rounded">Submit</button>
+                </div>
+                
+            </form>
+        </div>
+        <script>
+            document.getElementById("updatesubmit").addEventListener("click", function(event){
+                event.preventDefault()
+                const id = '<%= docs._id %>';
+                const name = document.getElementById('name').value;
+                const employeeID = document.getElementById('employeeID').value;
+                const phnnumber = document.getElementById('phnnumber').value;
+                fetch('/updateinfo', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({id, name, employeeID, phnnumber}),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    location.reload();
+                });
+                location.assign('/database-page')
+            });
+        </script>
+    </body>
+</html>

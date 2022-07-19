@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="icon" size="5px" href="favicon-16x16.ico">
+        <script src="https://cdn.tailwindcss.com/"></script>
+        <title>EIL login</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="loginbody">
+        <div class="collegename">
+            <header class="h-76 mx-11 grid grid-cols-3 px-8 gap-4 content-center bg-[#E4DCCF] ">
+                <img id="imgLogo" src="EIL-logo.ico" alt="institute logo">
+                <p class="text-black text-left my-11  text-6xl font-serif"><span
+                        class=" inline-block align-left">Engineers India Limited</span></p>
+            </header>
+        </div> <br><br>
+        
+        
+        <div class="logininfo">
+            <% if(messages.error) {%>
+                <%= messages.error %>
+            <% } %>
+            <form action="/" method="POST">
+                <div class="grid justify-items-center pt-8">
+                    <input class="takeinput rounded" type="email" name="email" placeholder="Email ID"><br>
+                </div>      
+                <div class="grid justify-items-center">
+                    <input class="takeinput rounded" type="password" name="password" placeholder="Password"><br>
+                </div>
+                <div class="grid justify-items-center">
+                    <button class="signinbutton  bg-sky-600 hover:bg-sky-700 w-28 text-white rounded" type="submit">Login</button>
+                </div>
+            </form>
+            <div class="grid justify-items-center text-white text-sm">
+                <p>Do not have an account?<br><span class="grid justify-items-center underline hover:underline-offset-4 hover:text-[#C70039] hover:font-bold"><button onclick="window.location='/register' ;">Register</button> </span></p>
+            </div>
+        </div>
+
+    </body>
+</html>

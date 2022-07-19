@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="icon" size="5px" href="favicon-16x16.ico">
+        <script src="https://cdn.tailwindcss.com/"></script>
+        <title>EIL data</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+   
+    <body class="loginbody">
+        <div class="collegename">
+            <header class="h-16 grid grid-cols-3 px-8 gap-4 content-center bg-[#E4DCCF] ">
+                <img id="imgLogoDataBasePage" src="EIL-logo.ico" alt="institute logo">
+                <p class="text-black text-left my-4  text-3xl font-serif font-bold"><span
+                        class=" inline-block align-left">Engineers India Limited</span></p>
+            </header>
+        </div> <br><br>
+        
+        
+        <!-- search bar -->
+        <div class="datainfo flex flex-col space-y-4">
+          <div class="search-wrapper  grid grid-cols-1 gap-4 content-center  ml-24">
+            <form action="/search">
+                <div class="content-center">
+                    <input class="content-center  w-3/5 h-6 rounded" type="search" placeholder="Search" name="search" id="search">
+                    <button class="bg-[#8D8DAA] hover:bg-[#828282] w-20 h-6 rounded  " type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-search mx-8" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                      </svg></button>
+                </div>
+            </form>
+          </div>
+            <form action="/addinfo" method="post">
+                <div class=" grid grid-cols-4 gap-4 content-center  ml-24">
+                    <input class="takeinput rounded" type="name" name="name" placeholder="Name">
+                    <input class="takeinput rounded" type="number" name="employeeID" placeholder="Employee ID">
+                    <input class="takeinput rounded" type="number" name="phnnumber" placeholder="Phone Number">
+                    <button class="signinbutton  bg-sky-600 hover:bg-sky-700 w-28 text-white rounded" type="submit">Add</button>
+                </div>
+            </form>
+            <table class="table-auto border-collapse border border-[#C7C6C1]">
+                <thead class="">
+                  <tr>
+                    <th class="border border-[#C7C6C1] text-white">Name</th>
+                    <th class="border border-[#C7C6C1] text-white">Employee ID</th>
+                    <th class="border border-[#C7C6C1] text-white">Phone Number</th>
+                    <th class="border border-[#C7C6C1] text-white">Edit</th>
+                    <th class="border border-[#C7C6C1] text-white">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% allData.forEach(function(singleEmployeeData) { %>
+                  <tr>
+                    <!-- <form action="/deleteinfo" method="post"> -->
+                      <td class="border border-[#C7C6C1] text-white"><%= singleEmployeeData.name %></td>
+                      <td class="border border-[#C7C6C1] text-white" name="employeeID"><%= singleEmployeeData.employeeID %></td>
+                      <td class="border border-[#C7C6C1] text-white"><%= singleEmployeeData.phnnumber %></td>
+                      <td class="border border-[#C7C6C1] text-white underline hover:underline-offset-4 cursor-pointer hover:font-bold"><button onclick="location.href='/updateinfo/' + '<%= singleEmployeeData._id %>' ;">Edit</button></td>
+                      <td class="border border-[#C7C6C1] text-white underline hover:underline-offset-4 cursor-pointer hover:text-[#C70039] hover:font-bold"><button onclick="window.location='delete/'+ '<%= singleEmployeeData._id %>' ;">Delete</button></td>
+                    </form>
+                  </tr>
+                  <!-- <% }) %> -->
+                </tbody>
+              </table>
+          </div>
+          <script>
+            function deletedata(){
+              console.log("here");
+              let data = '<%-allData%>';
+              console.log(data);
+                fetch('/deleteinfo/' , {
+                  method: 'DELETE',
+                })
+                .then(res => res.text()) // or res.json()
+                .then(res => console.log(res))
+              }
+          </script>
+    </body>
+</html>
